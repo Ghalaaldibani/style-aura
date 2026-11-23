@@ -55,7 +55,7 @@ Bonus: live database (Firebase) storing user data or interaction logs.
 ## Progress (update after every phase) — build follows FULL_SPEC.md §8 (12 phases)
 - ✅ Phase 1 (2026-11-22): AdaptiveProvider wired in main.jsx, `.high-contrast` CSS variable overrides, ContrastBanner, shared UI in `src/components/ui/` (Button, Input, Dialog, Toast, Tabs, Card, PageHeader). Dev test page `/dev/ui`.
 - ✅ Phase 2 (2026-11-22): Firebase project `style-aura-6b73e` (Auth Email/Password + Firestore, rules published from `firestore.rules`), config in git-ignored `.env.local`, `src/lib/firebase.js`, `src/auth/` (AuthProvider, useAuth, ProtectedRoute, PublicOnlyRoute). Verified: /home redirects to /login.
-- ⏳ In progress: GitHub. `git init` done locally (branch main, nothing committed yet). GitHub CLI installed via winget; waiting for the team to run `gh auth login`, choose private/public, and give Jana's and Raneem's GitHub usernames. Then: create repo `style-aura`, first commit + push, add collaborators, write an Arabic GitHub guide for the team (`docs/GITHUB_GUIDE.md`).
+- ✅ GitHub (2026-11-23): public repo https://github.com/Ghalaaldibani/style-aura (branch main). `gh` CLI logged in as Ghalaaldibani (if `gh` is not found in a shell, reload PATH from Machine+User env vars). Git identity = GitHub noreply email. Collaborators invited with write access: JanaAi1 (Jana), Khran6-max (Raneem). Team guide in Arabic: `docs/GITHUB_GUIDE.md` (includes Co-authored-by lines for Jana/Raneem). Commit + push at the end of every phase.
 - Next: Phase 3 (Sign Up, Log In, Forgot Password with dynamic error adaptation). Ask the team for Figma screenshots if the Figma MCP is not available.
 
 ## Next steps (original plan)
