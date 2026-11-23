@@ -5,7 +5,7 @@
 > HCI2011 User Interface Design · Umm Al-Qura University · Section 10
 > Team: **Ghala Aldibani** (leader), **Jana Asiri**, **Raneem Ayman**
 
-🔗 **Live app:** _added after deployment_
+🔗 **Live app:** https://style-aura-inky.vercel.app
 🎨 **Figma:** Lab 6 Prototype
 
 ## Features
