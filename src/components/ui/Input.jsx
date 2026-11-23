@@ -11,22 +11,53 @@ function EyeIcon({ open }) {
 }
 
 /**
- * Labelled text field with hint + error support.
- * - The label is a real <label for>, so tapping it focuses the field.
- * - Hint and error are linked with aria-describedby, so screen readers read them.
+ * Labelled text field with hint + error + adaptive hint.
+ * - Real <label for>, so tapping the label focuses the field.
+ * - Hint, error and adaptive hint are linked with aria-describedby (read by screen readers).
  * - aria-invalid marks the field when there is an error.
- * - Errors use text + an icon + a thicker border, never colour alone.
- * - type="password" adds a show/hide button.
+ * - Errors use text + icon + thicker border, never colour alone.
+ * - `adaptiveHint` (shown after repeated errors) adds an example box and highlights the field.
+ * - type="password" adds a show/hide button. `multiline` renders a <textarea>.
  */
-export default function Input({ label, hint, error, id, type = 'text', className = '', ref, ...rest }) {
+export default function Input({
+  label,
+  hint,
+  error,
+  adaptiveHint,
+  id,
+  type = 'text',
+  multiline = false,
+  className = '',
+  ref,
+  children,
+  ...rest
+}) {
   const autoId = useId()
   const inputId = id ?? autoId
   const hintId = `${inputId}-hint`
   const errorId = `${inputId}-error`
+  const adaptiveId = `${inputId}-adaptive`
   const [showPassword, setShowPassword] = useState(false)
   const isPassword = type === 'password'
 
-  const describedBy = [hint && hintId, error && errorId].filter(Boolean).join(' ') || undefined
+  const describedBy = [error && errorId, adaptiveHint && adaptiveId, hint && hintId].filter(Boolean).join(' ') || undefined
+
+  const fieldClass = [
+    'w-full rounded-xl bg-white px-4 text-base text-ink placeholder:text-muted transition-shadow',
+    multiline ? 'min-h-24 py-3' : 'min-h-12',
+    error ? 'border-2 border-error' : 'border border-line',
+    adaptiveHint ? 'ring-4 ring-rose/30' : '',
+    isPassword ? 'pr-14' : '',
+  ].join(' ')
+
+  const shared = {
+    ref,
+    id: inputId,
+    'aria-invalid': error ? true : undefined,
+    'aria-describedby': describedBy,
+    className: fieldClass,
+    ...rest,
+  }
 
   return (
     <div className={className}>
@@ -35,19 +66,13 @@ export default function Input({ label, hint, error, id, type = 'text', className
       </label>
 
       <div className="relative">
-        <input
-          ref={ref}
-          id={inputId}
-          type={isPassword && showPassword ? 'text' : type}
-          aria-invalid={error ? true : undefined}
-          aria-describedby={describedBy}
-          className={[
-            'min-h-12 w-full rounded-xl bg-white px-4 text-base text-ink placeholder:text-muted',
-            error ? 'border-2 border-error' : 'border border-line',
-            isPassword ? 'pr-14' : '',
-          ].join(' ')}
-          {...rest}
-        />
+        {multiline ? (
+          <textarea {...shared} />
+        ) : children ? (
+          <select {...shared}>{children}</select>
+        ) : (
+          <input {...shared} type={isPassword && showPassword ? 'text' : type} />
+        )}
         {isPassword && (
           <button
             type="button"
@@ -62,15 +87,21 @@ export default function Input({ label, hint, error, id, type = 'text', className
         )}
       </div>
 
-      {hint && (
-        <p id={hintId} className="mt-1.5 text-xs text-helper">
-          {hint}
-        </p>
-      )}
       {error && (
         <p id={errorId} className="mt-1.5 flex items-start gap-1.5 text-sm font-medium text-error">
           <span aria-hidden="true">⚠</span>
           <span>{error}</span>
+        </p>
+      )}
+      {adaptiveHint && (
+        <p id={adaptiveId} className="mt-2 flex items-start gap-2 rounded-xl border border-rose/40 bg-rose-light px-3 py-2 text-sm text-ink">
+          <span aria-hidden="true">💡</span>
+          <span>{adaptiveHint}</span>
+        </p>
+      )}
+      {hint && (
+        <p id={hintId} className="mt-1.5 text-xs text-helper">
+          {hint}
         </p>
       )}
     </div>

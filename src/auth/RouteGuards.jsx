@@ -13,11 +13,17 @@ export function ProtectedRoute() {
   return <Outlet />
 }
 
-// Welcome / Sign Up / Log In: a logged-in user doesn't need them, send them home.
+// Welcome / Sign Up / Log In: a logged-in user doesn't need them.
+// Send them back to the page they originally wanted, or Home.
 export function PublicOnlyRoute() {
   const { user, loading } = useAuth()
+  const location = useLocation()
 
   if (loading) return <FullScreenLoader />
-  if (user) return <Navigate to="/home" replace />
+  if (user) {
+    const from = location.state?.from
+    const target = from ? `${from.pathname}${from.search ?? ''}` : '/home'
+    return <Navigate to={target} replace />
+  }
   return <Outlet />
 }

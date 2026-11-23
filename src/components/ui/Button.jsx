@@ -2,15 +2,16 @@ import { Link } from 'react-router-dom'
 
 const VARIANTS = {
   primary: 'bg-primary text-white hover:bg-primary-dark',
-  secondary: 'bg-primary-light text-primary border border-primary hover:bg-white',
+  secondary: 'bg-white text-primary border-[1.5px] border-primary hover:bg-primary-light',
   ghost: 'text-primary hover:bg-primary-light',
   danger: 'bg-error text-white hover:opacity-90',
 }
 
 // Every size is at least 44px tall (touch target, WCAG 2.5.5).
 const SIZES = {
-  md: 'min-h-11 px-5 rounded-xl text-base',
-  lg: 'min-h-14 px-6 rounded-2xl text-base',
+  sm: 'min-h-11 px-4 rounded-xl text-sm',
+  md: 'min-h-[3.125rem] px-5 rounded-xl text-base',
+  lg: 'min-h-14 px-6 rounded-2xl text-h3',
 }
 
 function Spinner() {

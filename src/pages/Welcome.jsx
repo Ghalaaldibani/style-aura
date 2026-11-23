@@ -12,7 +12,7 @@ export default function Welcome() {
       </div>
 
       <section className="relative z-10 min-h-full flex flex-col items-center text-center">
-        <img src="/logo.png" alt="Style Aura logo" className="w-40 h-40 mt-6 rounded-full object-cover" />
+        <img src="/logo-320.webp" alt="Style Aura logo" className="w-40 h-40 mt-6 rounded-full object-cover" />
 
         <h1 className="mt-6 text-[40px] font-bold text-primary">StyleAura</h1>
         <p className="mt-3 text-lg text-helper max-w-60">Your digital closet with a built-in stylist</p>
