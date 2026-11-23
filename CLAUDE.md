@@ -60,7 +60,8 @@ Bonus: live database (Firebase) storing user data or interaction logs.
 - ✅ Phase 12 docs: `docs/HCI_MAPPING.md`, `docs/SCREENSHOTS_CHECKLIST.md`, README.
 - Figma connector hit the Starter-plan call limit after 11 frames; Event Planner, Create Outfit, Share, Feed, Post Detail were designed in the same style without the frames.
 - ✅ Phase 11 (2026-11-23): deployed with Vercel CLI (logged in as the team leader; project `style-aura`, linked in `.vercel/`). Live: https://style-aura-inky.vercel.app. 6 `VITE_FIREBASE_*` env vars added as type `config` (Firebase web keys are public by design). Redeploy: `npx vercel deploy --prod --yes` (auto-deploy on push NOT connected yet).
-- ⏳ Waiting for the team: publish the NEW `firestore.rules`, add `style-aura-inky.vercel.app` to Firebase Auth → Authorized domains, test on a phone, install vercel-plugin themselves if wanted (`npx plugins add vercel/vercel-plugin`, needs Bun; the agent is not allowed to install plugins on itself). Then: Lighthouse scores, screenshots, final PROMPT_LOG cleanup.
+- ✅ (2026-11-23) Team published the new `firestore.rules` and added `style-aura-inky.vercel.app` to Firebase Auth → Authorized domains. Vercel plugin skipped: `/plugin` isn't available in the VS Code extension (Bun 1.4.5 was installed); use `npx vercel ls style-aura` for status instead.
+- ⏳ Next: team tests on a phone, Lighthouse scores, screenshots (`docs/SCREENSHOTS_CHECKLIST.md`), final PROMPT_LOG cleanup; optional `vercel git connect` for auto-deploy.
 
 ## Next steps (original plan)
 - 8.2 Wrap the app in `AdaptiveProvider` (main.jsx) + add `.high-contrast` CSS variable overrides in index.css
