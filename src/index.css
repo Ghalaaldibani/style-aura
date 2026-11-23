@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Primary */
+  --color-primary: #5B2A86;
+  --color-primary-dark: #44206A;
+  --color-primary-light: #EFE6F7;
+
+  /* Secondary */
+  --color-rose: #C2477A;
+  --color-rose-light: #FBE6EE;
+
+  /* Neutral */
+  --color-ink: #1F1A24;      /* Neutral 900 */
+  --color-muted: #6B6472;    /* Neutral 600 */
+  --color-line: #E6E1EA;     /* Neutral 200 */
+  --color-canvas: #FAF7FC;   /* Neutral 50 */
+  --color-helper: #3E3838;   /* Helper text — Phase 2 audit fix (10.8:1) */
+
+  /* Semantic */
+  --color-error: #D93025;
+  --color-success: #1E8E3E;
+  --color-warning: #B26A00;
+  --color-info: #1A73E8;
+}
+
+body {
+  @apply bg-canvas text-ink font-sans;
+}
+
+/* Visible keyboard focus everywhere (WCAG 2.4.7) */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/*
+  High-contrast mode (WCAG 1.4.3 / 1.4.11).
+  AdaptiveProvider adds the `high-contrast` class to <html>.
+  Tailwind utilities read the colour variables, so overriding the variables
+  here re-colours the whole app at once — no component needs to change.
+*/
+.high-contrast {
+  --color-primary: #3B1166;
+  --color-primary-dark: #250A42;
+  --color-primary-light: #F1E9F8;
+  --color-rose: #8A1F4F;
+  --color-rose-light: #FBE6EE;
+  --color-ink: #000000;
+  --color-muted: #3A3340;
+  --color-line: #5C5563;
+  --color-canvas: #FFFFFF;
+  --color-helper: #000000;
+  --color-error: #A50E0E;
+  --color-success: #0B6B28;
+  --color-warning: #7A4A00;
+  --color-info: #0B4FBF;
+}
+
+.high-contrast :focus-visible {
+  outline-width: 4px;
+}
+
+/* Respect the OS "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

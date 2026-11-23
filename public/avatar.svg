@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Girl avatar">
+  <g stroke="#1F1A24" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- hair (back) -->
+    <path d="M40 150 C30 100 38 40 100 34 C162 40 170 100 160 150 Z" fill="#8B5A3C"/>
+    <!-- shirt -->
+    <path d="M38 196 C40 160 62 146 100 146 C138 146 160 160 162 196 Z" fill="#F28B9B"/>
+    <!-- neck -->
+    <path d="M86 128 L86 152 C92 160 108 160 114 152 L114 128 Z" fill="#F6C7A6"/>
+    <!-- face -->
+    <ellipse cx="100" cy="96" rx="42" ry="46" fill="#FDDCC4"/>
+    <!-- bangs -->
+    <path d="M58 92 C56 60 76 44 100 44 C126 44 146 60 142 92 C128 84 112 70 104 58 C96 74 78 86 58 92 Z" fill="#8B5A3C"/>
+  </g>
+  <!-- eyes -->
+  <circle cx="84" cy="100" r="5" fill="#1F1A24"/>
+  <circle cx="116" cy="100" r="5" fill="#1F1A24"/>
+  <!-- blush -->
+  <ellipse cx="74" cy="114" rx="7" ry="4.5" fill="#F7A1AE"/>
+  <ellipse cx="126" cy="114" rx="7" ry="4.5" fill="#F7A1AE"/>
+  <!-- smile -->
+  <path d="M88 118 Q100 130 112 118" fill="none" stroke="#1F1A24" stroke-width="5" stroke-linecap="round"/>
+</svg>

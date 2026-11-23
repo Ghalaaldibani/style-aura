@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Each user can read and write only their own data
+    match /users/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+      match /{subcollection=**} {
+        allow read, write: if signedIn() && request.auth.uid == uid;
+      }
+    }
+
+    // Seeded catalog: read-only for signed-in users
+    match /products/{productId} {
+      allow read: if signedIn();
+      allow write: if false;
+    }
+    match /boards/{boardId} {
+      allow read: if signedIn();
+      allow write: if false;
+    }
+  }
+}
